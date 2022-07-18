@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="calculator" id="bloquear-selecao">
+        <input
+          [(ngModel)]="inputNumbers"
+          class="input"
+          id="input"
+          ngDefaultControl
+          disabled="true"
+        />
+        <div class="buttons">
+          <div class="operators">
+            <div (click)="clickBtn($event)">+</div>
+            <div (click)="clickBtn($event)" id="clear">C</div>
+            <div (click)="getResultado()">=</div>
+          </div>
+          <div class="leftPanel">
+            <div class="numbers col-md-6">
+              <div *ngFor="let numbers of numeros" (click)="clickBtn($event)">
+                {{ numbers.n }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <h1>Histórico</h1>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">1º Número</th>
+            <th scope="col">2º Número</th>
+            <th scope="col">Resultado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let hist of historico; let i = index">
+            <th scope="row">{{ i }}</th>
+            <td>{{ hist.f_numero }}</td>
+            <td>{{ hist.s_numero }}</td>
+            <td>{{ hist.resultado }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
